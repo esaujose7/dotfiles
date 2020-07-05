@@ -41,7 +41,6 @@ Plug 'scrooloose/nerdcommenter'
 
 "" Git related
 Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-signify'
 Plug 'airblade/vim-gitgutter'
 
 "" NerdTree and related plugins
