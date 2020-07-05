@@ -72,6 +72,12 @@ let g:vim_jsx_pretty_colorful_config = 1
 
 let mapleader = " "
 
+let g:gitgutter_map_keys = 0
+
+nmap ghs <Plug>(GitGutterStageHunk)
+nmap ghu <Plug>(GitGutterUndoHunk)
+nmap ghp <Plug>(GitGutterPreviewHunk)
+
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
