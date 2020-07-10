@@ -15,6 +15,7 @@ set undofile
 set incsearch
 set colorcolumn=140
 set cmdheight=2
+set noshowmode
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
