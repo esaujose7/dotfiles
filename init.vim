@@ -14,6 +14,7 @@ set undodir=~/.vim/undodir
 set undofile
 set incsearch
 set colorcolumn=140
+set cmdheight=2
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
@@ -24,7 +25,6 @@ Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mattn/emmet-vim'
-Plug 'valloric/MatchTagAlways'
 
 "" Autocompleter
 Plug 'https://github.com/ycm-core/YouCompleteMe.git'
@@ -58,7 +58,7 @@ let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
 set background=dark
 
-set updatetime=100
+set updatetime=300
 
 if executable('rg')
     let g:rg_derive_root='true'
@@ -77,6 +77,8 @@ let g:gitgutter_map_keys = 0
 nmap ghs <Plug>(GitGutterStageHunk)
 nmap ghu <Plug>(GitGutterUndoHunk)
 nmap ghp <Plug>(GitGutterPreviewHunk)
+nmap ]c <Plug>(GitGutterNextHunk)
+nmap [c <Plug>(GitGutterPrevHunk)
 
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
@@ -84,6 +86,7 @@ nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>pv :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
+nnoremap <leader>gs :G<CR>
 nnoremap <Leader>ps :Rg<SPACE>
 
 nnoremap <silent> <Leader>gd :YcmCompleter GoTo<CR> 
