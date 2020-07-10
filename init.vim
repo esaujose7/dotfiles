@@ -10,10 +10,15 @@ set nowrap
 set smartcase
 set noswapfile
 set nobackup
+set nowritebackup
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
 set colorcolumn=140
+set hidden
+set shortmess+=c
+set cmdheight=2
+set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
@@ -24,17 +29,22 @@ Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mattn/emmet-vim'
-Plug 'valloric/MatchTagAlways'
 
-"" Autocompleter
-Plug 'https://github.com/ycm-core/YouCompleteMe.git'
+" CoC / autocompleter
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+let g:coc_global_extensions = [
+      \'coc-tsserver',
+      \'coc-eslint',
+      \'coc-prettier',
+      \'coc-json',
+      \'coc-html',
+      \'coc-css'
+      \]
 
 "" Navigation
 Plug 'jremmen/vim-ripgrep'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
-
-"" Status bar
-Plug 'vim-airline/vim-airline'
 
 "" Commenter
 Plug 'scrooloose/nerdcommenter'
@@ -43,22 +53,21 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-"" NerdTree and related plugins
+"" good stuff for 'ide'
+Plug 'https://github.com/morhetz/gruvbox.git'
+Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 
-"" ColorScheme :D
-Plug 'https://github.com/morhetz/gruvbox.git'
-
 call plug#end()
 
-let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_contrast_dark = 'medium'
 colorscheme gruvbox
 set background=dark
 
-set updatetime=100
+set updatetime=300
 
 if executable('rg')
     let g:rg_derive_root='true'
@@ -77,6 +86,8 @@ let g:gitgutter_map_keys = 0
 nmap ghs <Plug>(GitGutterStageHunk)
 nmap ghu <Plug>(GitGutterUndoHunk)
 nmap ghp <Plug>(GitGutterPreviewHunk)
+nmap ]c <Plug>(GitGutterNextHunk)
+nmap [c <Plug>(GitGutterPrevHunk)
 
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
@@ -85,8 +96,19 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>pv :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
 nnoremap <Leader>ps :Rg<SPACE>
+nmap <leader>gs :G<CR>
 
-nnoremap <silent> <Leader>gd :YcmCompleter GoTo<CR> 
+"" CoC stuff
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
-"" temporary hack since jsx not working for the autocompleter
-autocmd BufNewFile,BufRead *.jsx set filetype=javascript
+" tab for trigger completion
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>rr <Plug>(coc-rename)
