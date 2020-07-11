@@ -14,7 +14,6 @@ set undodir=~/.vim/undodir
 set undofile
 set incsearch
 set colorcolumn=140
-set cmdheight=2
 set noshowmode
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
@@ -29,6 +28,9 @@ Plug 'mattn/emmet-vim'
 
 "" Autocompleter
 Plug 'https://github.com/ycm-core/YouCompleteMe.git'
+
+"" Linting
+Plug 'dense-analysis/ale'
 
 "" Navigation
 Plug 'jremmen/vim-ripgrep'
@@ -74,6 +76,8 @@ let g:vim_jsx_pretty_colorful_config = 1
 let mapleader = " "
 
 let g:gitgutter_map_keys = 0
+
+let b:ale_fixers = {'javascript': ['eslint', 'prettier']}
 
 nmap ghs <Plug>(GitGutterStageHunk)
 nmap ghu <Plug>(GitGutterUndoHunk)
