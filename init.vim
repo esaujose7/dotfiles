@@ -97,7 +97,10 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>pv :NERDTreeToggle<CR>
 nnoremap <leader>pf :NERDTreeFind<CR>
 nnoremap <Leader>ps :Rg<SPACE>
+
 nmap <leader>gs :G<CR>
+nmap <leader>gf :diffget //2<CR>
+nmap <leader>gj :diffget //3<CR>
 
 "" CoC stuff
 function! s:check_back_space() abort
@@ -112,4 +115,4 @@ inoremap <silent><expr> <TAB>
       \ coc#refresh()
 
 nmap <silent><leader>gd <Plug>(coc-definition)
-nmap <leader>rr <Plug>(coc-rename)
+nmap <silent><leader>rr <Plug>(coc-rename)
