@@ -19,6 +19,7 @@ set hidden
 set shortmess+=c
 set cmdheight=2
 set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
+set relativenumber
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
@@ -53,7 +54,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-"" good stuff for 'ide'
+"" good stuff for vim 
 Plug 'https://github.com/morhetz/gruvbox.git'
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
@@ -63,7 +64,7 @@ Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
-let g:gruvbox_contrast_dark = 'medium'
+let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
 set background=dark
 
@@ -94,7 +95,7 @@ nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>pv :NERDTreeToggle<CR>
-nnoremap <leader>f :NERDTreeFind<CR>
+nnoremap <leader>pf :NERDTreeFind<CR>
 nnoremap <Leader>ps :Rg<SPACE>
 nmap <leader>gs :G<CR>
 
@@ -110,5 +111,5 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 
-nmap <leader>gd <Plug>(coc-definition)
+nmap <silent><leader>gd <Plug>(coc-definition)
 nmap <leader>rr <Plug>(coc-rename)
