@@ -15,6 +15,7 @@ set undofile
 set incsearch
 set colorcolumn=140
 set noshowmode
+set relativenumber
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
@@ -73,28 +74,43 @@ let g:ctrlp_use_caching = 0
 let g:javascript_plugin_jsdoc = 1
 let g:vim_jsx_pretty_colorful_config = 1
 
-let mapleader = " "
-
 let g:gitgutter_map_keys = 0
 
-let b:ale_fixers = {'javascript': ['eslint', 'prettier']}
+let g:airline#extensions#ale#enabled = 1 " let airline handle Ale extension
+let g:ale_echo_msg_format = '[%linter%] %severity%: %s'
+let g:ale_fixers = {
+      \'*': ['remove_trailing_lines', 'trim_whitespace'],
+      \'javascript': ['eslint']
+\}
 
+let mapleader = " "
+
+
+" Navigation mappings
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
+
+"NERDTree mapings
+nnoremap <leader>pv :NERDTreeToggle<CR>
+nnoremap <leader>pf :NERDTreeFind<CR>
+
+" Git related (need to be expanded asap)
+nnoremap <leader>gs :G<CR>
 nmap ghs <Plug>(GitGutterStageHunk)
 nmap ghu <Plug>(GitGutterUndoHunk)
 nmap ghp <Plug>(GitGutterPreviewHunk)
 nmap ]c <Plug>(GitGutterNextHunk)
 nmap [c <Plug>(GitGutterPrevHunk)
 
-nnoremap <leader>h :wincmd h<CR>
-nnoremap <leader>j :wincmd j<CR>
-nnoremap <leader>k :wincmd k<CR>
-nnoremap <leader>l :wincmd l<CR>
-nnoremap <leader>pv :NERDTreeToggle<CR>
-nnoremap <leader>f :NERDTreeFind<CR>
-nnoremap <leader>gs :G<CR>
-nnoremap <Leader>ps :Rg<SPACE>
+" Linter
+nnoremap <leader>i :ALEHover<CR>
+nnoremap <leader>f :ALEFix<CR>
 
+" Ripgrep
+nnoremap <Leader>ps :Rg<SPACE>
 nnoremap <silent> <Leader>gd :YcmCompleter GoTo<CR> 
 
-"" temporary hack since jsx not working for the autocompleter
+"" temporary hack since jsx not working for the autocompleter (YCM)
 autocmd BufNewFile,BufRead *.jsx set filetype=javascript
