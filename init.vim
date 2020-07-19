@@ -43,6 +43,9 @@ let g:coc_global_extensions = [
       \'coc-css'
       \]
 
+"" Linting
+Plug 'dense-analysis/ale'
+
 "" Navigation
 Plug 'jremmen/vim-ripgrep'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
@@ -80,8 +83,6 @@ let g:ctrlp_use_caching = 0
 let g:javascript_plugin_jsdoc = 1
 let g:vim_jsx_pretty_colorful_config = 1
 
-let mapleader = " "
-
 let g:gitgutter_map_keys = 0
 
 nmap ghs <Plug>(GitGutterStageHunk)
@@ -90,14 +91,20 @@ nmap ghp <Plug>(GitGutterPreviewHunk)
 nmap ]c <Plug>(GitGutterNextHunk)
 nmap [c <Plug>(GitGutterPrevHunk)
 
+let mapleader = " "
+
+" Navigation mappings
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
+
+" NERDTree mapings
 nnoremap <leader>pv :NERDTreeToggle<CR>
 nnoremap <leader>pf :NERDTreeFind<CR>
 nnoremap <Leader>ps :Rg<SPACE>
 
+" Git mappings
 nmap <leader>gs :G<CR>
 nmap <leader>gf :diffget //2<CR>
 nmap <leader>gj :diffget //3<CR>
@@ -114,5 +121,6 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 
+" CoC mappings
 nmap <silent><leader>gd <Plug>(coc-definition)
 nmap <silent><leader>rr <Plug>(coc-rename)
