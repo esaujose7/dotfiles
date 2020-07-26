@@ -124,3 +124,4 @@ inoremap <silent><expr> <TAB>
 " CoC mappings
 nmap <silent><leader>gd <Plug>(coc-definition)
 nmap <silent><leader>rr <Plug>(coc-rename)
+nmap <silent><leader>f :CocCommand eslint.executeAutofix<CR>
