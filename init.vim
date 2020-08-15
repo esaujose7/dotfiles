@@ -43,9 +43,6 @@ let g:coc_global_extensions = [
       \'coc-css'
       \]
 
-"" Linting
-Plug 'dense-analysis/ale'
-
 "" Navigation
 Plug 'jremmen/vim-ripgrep'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
