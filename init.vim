@@ -18,8 +18,17 @@ set colorcolumn=140
 set hidden
 set shortmess+=c
 set cmdheight=2
-set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
 set relativenumber
+set updatetime=300
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
@@ -68,8 +77,6 @@ let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
 set background=dark
 
-set updatetime=300
-
 if executable('rg')
     let g:rg_derive_root='true'
 endif
@@ -117,8 +124,27 @@ inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
 " CoC mappings
 nmap <silent><leader>gd <Plug>(coc-definition)
 nmap <silent><leader>rr <Plug>(coc-rename)
 nmap <silent><leader>f :CocCommand eslint.executeAutofix<CR>
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
