@@ -39,6 +39,7 @@ Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mattn/emmet-vim'
+Plug 'jiangmiao/auto-pairs'
 
 " CoC / autocompleter
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -52,9 +53,11 @@ let g:coc_global_extensions = [
       \'coc-css'
       \]
 
+
 "" Navigation
 Plug 'jremmen/vim-ripgrep'
-Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 "" Commenter
 Plug 'scrooloose/nerdcommenter'
@@ -80,9 +83,6 @@ set background=dark
 if executable('rg')
     let g:rg_derive_root='true'
 endif
-
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-let g:ctrlp_use_caching = 0
 
 let g:javascript_plugin_jsdoc = 1
 let g:vim_jsx_pretty_colorful_config = 1
@@ -114,6 +114,13 @@ nnoremap <Leader>ps :Rg<SPACE>
 nmap <leader>gs :G<CR>
 nmap <leader>gf :diffget //2<CR>
 nmap <leader>gj :diffget //3<CR>
+
+"FZF
+let $FZF_DEFAULT_COMMAND='rg --files'
+nnoremap <C-p> :Files<CR>
+
+let $FZF_DEFAULT_OPTS='--reverse'
+let g:fzf_layout = { 'window': {'width': 0.8, 'height': 0.8} }
 
 "" CoC stuff
 function! s:check_back_space() abort
