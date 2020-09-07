@@ -56,7 +56,6 @@ let g:coc_global_extensions = [
 
 "" Navigation
 Plug 'jremmen/vim-ripgrep'
-"Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
@@ -84,9 +83,6 @@ set background=dark
 if executable('rg')
     let g:rg_derive_root='true'
 endif
-
-"let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-"let g:ctrlp_use_caching = 0
 
 let g:javascript_plugin_jsdoc = 1
 let g:vim_jsx_pretty_colorful_config = 1
