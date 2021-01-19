@@ -1,9 +1,11 @@
 [user]
   name = Esaú Murillo
-	email = esaujose7@gmail.com 
+	email = esaujose7@gmail.com
 [github]
   user = esaujose7
 [credential]
 	helper = cache --timeout=18000
 [core]
 	editor = vim
+[includeIf "gitdir:~/dev/"]
+	path = ~/dotfiles/gitconfig.work

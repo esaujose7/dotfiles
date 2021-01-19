@@ -11,3 +11,6 @@ ln -s $HOME/dotfiles/vim/init.vim $HOME/.config/nvim/init.vim
 ```
 
 TODO: Have a bash script to install Fira Code Mono Nerd Font (best font ever btw)
+TODO: Have a bash script to install EVERYTHING!!
+
+Eternal WIP since I'm a noob learning dotfiles configs stuff

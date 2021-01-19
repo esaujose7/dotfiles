@@ -5,7 +5,6 @@ set tabstop=2 softtabstop=2
 set shiftwidth=2
 set expandtab
 set smartindent
-set nu
 set nowrap
 set smartcase
 set noswapfile
@@ -19,7 +18,13 @@ set hidden
 set shortmess+=c
 set cmdheight=2
 set relativenumber
+set nu
 set updatetime=300
+set cursorline
+set termguicolors
+set noshowmode
+set nohlsearch
+set scrolloff=8
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
@@ -41,7 +46,7 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 
-" CoC / autocompleter
+" CoC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 let g:coc_global_extensions = [
@@ -66,9 +71,11 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-"" good stuff for vim 
-Plug 'https://github.com/morhetz/gruvbox.git'
-Plug 'vim-airline/vim-airline'
+"" THEMES 
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'itchyny/lightline.vim'
+
+"" NERDTree boi
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -76,9 +83,29 @@ Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
-let g:gruvbox_contrast_dark = 'hard'
-colorscheme gruvbox
-set background=dark
+colorscheme onehalfdark
+
+let g:lightline = {
+  \ 'colorscheme': 'onehalfdark',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+  \ },
+  \ 'component_function': {
+  \   'gitbranch': 'FugitiveHead',
+  \   'filename': 'LightlineFilename'
+  \ },
+\ }
+
+
+function! LightlineFilename()
+  let root = fnamemodify(get(b:, 'git_dir'), ':h')
+  let path = expand('%:p')
+  if path[:len(root)-1] ==# root
+    return path[len(root)+1:]
+  endif
+  return expand('%')
+endfunction
 
 if executable('rg')
     let g:rg_derive_root='true'
@@ -119,7 +146,7 @@ nmap <leader>gj :diffget //3<CR>
 let $FZF_DEFAULT_COMMAND='rg --files'
 nnoremap <C-p> :Files<CR>
 
-let $FZF_DEFAULT_OPTS='--reverse'
+let $FZF_DEFAULT_OPTS='--reverse --color=dark --color=fg:-1,bg:-1,hl:#c678dd,fg+:#ffffff,bg+:#4b5263,hl+:#d858fe --color=info:#98c379,prompt:#61afef,pointer:#be5046,marker:#e5c07b,spinner:#61afef,header:#61afef'
 let g:fzf_layout = { 'window': {'width': 0.8, 'height': 0.8} }
 
 "" CoC stuff
@@ -144,6 +171,9 @@ endif
 
 " CoC mappings
 nmap <silent><leader>gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 nmap <silent><leader>rr <Plug>(coc-rename)
 nmap <silent><leader>f :CocCommand eslint.executeAutofix<CR>
 
@@ -157,3 +187,5 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
