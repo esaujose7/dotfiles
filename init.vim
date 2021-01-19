@@ -5,7 +5,6 @@ set tabstop=2 softtabstop=2
 set shiftwidth=2
 set expandtab
 set smartindent
-set nu
 set nowrap
 set smartcase
 set noswapfile
@@ -19,10 +18,13 @@ set hidden
 set shortmess+=c
 set cmdheight=2
 set relativenumber
+set nu
 set updatetime=300
 set cursorline
 set termguicolors
 set noshowmode
+set nohlsearch
+set scrolloff=8
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
@@ -169,6 +171,9 @@ endif
 
 " CoC mappings
 nmap <silent><leader>gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 nmap <silent><leader>rr <Plug>(coc-rename)
 nmap <silent><leader>f :CocCommand eslint.executeAutofix<CR>
 
@@ -182,3 +187,5 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
