@@ -45,6 +45,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'jparise/vim-graphql'
 
 " CoC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -56,7 +57,8 @@ let g:coc_global_extensions = [
       \'coc-json',
       \'coc-html',
       \'coc-css',
-      \'coc-discord',
+      \'coc-graphql',
+      \'coc-discord'
       \]
 
 "" Navigation
