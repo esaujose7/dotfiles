@@ -57,8 +57,9 @@ let g:coc_global_extensions = [
       \'coc-json',
       \'coc-html',
       \'coc-css',
-      \'coc-graphql',
-      \'coc-discord'
+      \'coc-discord',
+      \'coc-phpls',
+      \'coc-metals'
       \]
 
 "" Navigation
