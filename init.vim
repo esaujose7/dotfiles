@@ -39,6 +39,7 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'hoob3rt/lualine.nvim'
 
 "" Git related
 Plug 'tpope/vim-fugitive'
@@ -46,7 +47,6 @@ Plug 'airblade/vim-gitgutter'
 
 "" THEMES 
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
-Plug 'itchyny/lightline.vim'
 
 "" NERDTree boi
 Plug 'preservim/nerdtree'
@@ -58,31 +58,6 @@ call plug#end()
 
 "" THEMING "
 colorscheme onehalfdark
-
-let g:lightline = {
-  \ 'colorscheme': 'onehalfdark',
-  \ 'active': {
-  \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-  \ },
-  \ 'component_function': {
-  \   'gitbranch': 'FugitiveHead',
-  \   'filename': 'LightlineFilename'
-  \ },
-\ }
-
-function! LightlineFilename()
-  let root = fnamemodify(get(b:, 'git_dir'), ':h')
-  let path = expand('%:p')
-  if path[:len(root)-1] ==# root
-    return path[len(root)+1:]
-  endif
-  return expand('%')
-endfunction
-
-if executable('rg')
-    let g:rg_derive_root='true'
-endif
 
 "" MAPPINGS "
 let mapleader = " "
