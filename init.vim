@@ -32,6 +32,7 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'neovim/nvim-lspconfig'
+Plug 'glepnir/lspsaga.nvim'
 
 "" Git related
 Plug 'tpope/vim-fugitive'
