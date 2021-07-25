@@ -23,4 +23,3 @@ nvim_lsp.tsserver.setup {
   filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" }
 }
 EOF
-
