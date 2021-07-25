@@ -7,7 +7,8 @@ local actions = require('telescope.actions')
 
 require('telescope').setup {
   defaults = {
-    mappings = {
+   sorting_strategy = "ascending", 
+   mappings = {
       n = {
         ["q"] = actions.close
       },
