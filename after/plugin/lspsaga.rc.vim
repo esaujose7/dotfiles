@@ -14,7 +14,9 @@ saga.init_lsp_saga {
 } 
 EOF
 
-nnoremap <silent> <C-j> <Cmd>Lspsaga diagnostic_jump_next<CR>
+nnoremap <silent> <leader>cd :Lspsaga show_line_diagnostics<CR>
+nnoremap <silent> ]e :Lspsaga diagnostic_jump_next<CR>
+nnoremap <silent> [e :Lspsaga diagnostic_jump_prev<CR>
 
 nnoremap <silent>K <Cmd>Lspsaga hover_doc<CR>
 nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
@@ -26,4 +28,3 @@ nnoremap <silent><leader>ca :Lspsaga code_action<CR>
 vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
 
 nnoremap <silent><leader>rr :Lspsaga rename<CR>
-
