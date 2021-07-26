@@ -1,19 +1,19 @@
 lua << EOF
-local prettier = function()
-    return {
-        exe = "prettier",
-        args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), '--single-quote'},
-        stdin = true
-    }
+local eslint = function()
+  return {
+    exe = "eslint_d",
+    args = {"--stdin", "--stdin-filename", vim.api.nvim_buf_get_name(0), "--fix-to-stdout"},
+    stdin = true
+  }
 end
 
 require('formatter').setup({
   logging = false,
   filetype = {
-    javascript = {prettier},
-     javascriptreact = {prettier},
-    typescript = {prettier},
-    typescriptreact = {prettier},
+    javascript = {eslint},
+    javascriptreact = {eslint},
+    typescript = {eslint},
+    typescriptreact = {eslint},
   }
 })
 EOF

@@ -1,4 +1,1 @@
-npm i -g vscode-langservers-extracted
-npm install -g graphql-language-service-cli
-npm install -g dockerfile-language-server-nodejs
-npm install -g typescript typescript-language-server
+npm i -g vscode-langservers-extracted graphql-language-service-cli dockerfile-language-server-nodejs typescript typescript-language-server eslint_d
