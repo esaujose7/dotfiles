@@ -3,8 +3,10 @@ if !exists('g:lspconfig')
 endif
 
 lua << EOF
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 local nvim_lsp = require('lspconfig')
-local protocol = require('vim.lsp.protocol')
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -18,8 +20,22 @@ local on_attach = function(client, bufnr)
   require 'completion'.on_attach(client, bufnr)
 end
 
-nvim_lsp.tsserver.setup {
-  on_attach = on_attach,
-  filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" }
+local servers = { 
+  { server = "tsserver" }, 
+  { server = "html", capabilities = capabilities },
+  { server = "cssls", capabilities = capabilities },
+  { server = "jsonls", capabilities = capabilities },
+  { server = "dockerls" },
+  { server = "graphql" },
 }
+
+for _, lsp in ipairs(servers) do
+  local lsp_setup = { on_attach = on_attach }
+
+  if lsp.capabilities ~= nil then
+    lsp_setup["capabilities"] = lsp.capabilities
+  end
+
+  nvim_lsp[lsp.server].setup(lsp_setup)
+end
 EOF
