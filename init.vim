@@ -51,6 +51,7 @@ Plug 'airblade/vim-gitgutter' " GitSigns
 
 "" THEMES 
 Plug 'navarasu/onedark.nvim'
+Plug 'projekt0n/github-nvim-theme'
 
 "" NERDTree boi
 Plug 'preservim/nerdtree' " NvimTree
@@ -61,7 +62,7 @@ Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 "" THEMING "
-colorscheme onedark
+lua require('github-theme').setup({ themeStyle = "dimmed" })
 
 "" MAPPINGS "
 let mapleader = " "
