@@ -16,8 +16,6 @@ local on_attach = function(client, bufnr)
   local opts = { noremap = true, silent = true }
 
   buf_set_keymap('n', '<leader>gd', '<Cmd> lua vim.lsp.buf.definition()<CR>', opts)
-
-  require 'completion'.on_attach(client, bufnr)
 end
 
 local servers = { 
