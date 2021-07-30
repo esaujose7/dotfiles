@@ -43,7 +43,6 @@ Plug 'hoob3rt/lualine.nvim'
 Plug 'mhartington/formatter.nvim'
 
 Plug 'preservim/nerdcommenter'
-Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 
 "" Git related
@@ -89,4 +88,5 @@ nnoremap <leader>pv :NERDTreeToggle<CR>
 nnoremap <leader>pf :NERDTreeFind<CR>
 
 " Git fugitive mappings
-nmap <leader>gs :G<CR>
+nmap <leader>gs :Git<CR>
+nmap <leader>gc :Git commit<CR>
