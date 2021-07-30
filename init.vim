@@ -42,18 +42,18 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'mhartington/formatter.nvim'
 
-Plug 'preservim/nerdcommenter'
-Plug 'jiangmiao/auto-pairs'
+Plug 'preservim/nerdcommenter' " kommenter ?
+Plug 'jiangmiao/auto-pairs' " nvim-pairs
 
 "" Git related
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter' " GitSigns
 
 "" THEMES 
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'navarasu/onedark.nvim'
 
 "" NERDTree boi
-Plug 'preservim/nerdtree'
+Plug 'preservim/nerdtree' " NvimTree
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
@@ -61,7 +61,7 @@ Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 "" THEMING "
-colorscheme onehalfdark
+colorscheme onedark
 
 "" MAPPINGS "
 let mapleader = " "
