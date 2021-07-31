@@ -47,7 +47,7 @@ Plug 'windwp/nvim-autopairs'
 
 "" Git related
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter' " GitSigns
+Plug 'lewis6991/gitsigns.nvim'
 
 "" THEMES 
 Plug 'navarasu/onedark.nvim'
@@ -66,15 +66,6 @@ lua require('github-theme').setup({ themeStyle = "dimmed" })
 
 "" MAPPINGS "
 let mapleader = " "
-
-"" GIT GUTTER MAPPINGS"
-let g:gitgutter_map_keys = 0
-
-nmap ghs <Plug>(GitGutterStageHunk)
-nmap ghu <Plug>(GitGutterUndoHunk)
-nmap ghp <Plug>(GitGutterPreviewHunk)
-nmap ]c <Plug>(GitGutterNextHunk)
-nmap [c <Plug>(GitGutterPrevHunk)
 
 " Navigation mappings
 nnoremap <leader>h :wincmd h<CR>
