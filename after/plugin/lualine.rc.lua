@@ -11,7 +11,7 @@ lualine.setup {
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {'branch'},
+    lualine_b = {'branch', 'diff'},
     lualine_c = {
       {'filename', path = 1, file_status = true}
     },
@@ -22,14 +22,6 @@ lualine.setup {
     },
     lualine_y = {'progress'},
     lualine_z = {'location'}
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
   },
   tabline = {},
   extensions = {'fugitive', 'nerdtree'}
