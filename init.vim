@@ -31,19 +31,27 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 call plug#begin('~/.config/nvim/plugged')
 
+"" LSP related
 Plug 'neovim/nvim-lspconfig'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'branch': '0.5-compat', 'do': ':TSUpdate' }
+
+"" Auto completion
 Plug 'hrsh7th/nvim-compe'
+
+"" telescope bro
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'hoob3rt/lualine.nvim'
-Plug 'mhartington/formatter.nvim'
 
+"" status line
+Plug 'hoob3rt/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+
+"" Editing related
 Plug 'preservim/nerdcommenter' " kommenter ?
 Plug 'windwp/nvim-autopairs'
+Plug 'mhartington/formatter.nvim'
 
 "" Git related
 Plug 'tpope/vim-fugitive'
