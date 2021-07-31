@@ -43,7 +43,7 @@ Plug 'hoob3rt/lualine.nvim'
 Plug 'mhartington/formatter.nvim'
 
 Plug 'preservim/nerdcommenter' " kommenter ?
-Plug 'jiangmiao/auto-pairs' " nvim-pairs
+Plug 'windwp/nvim-autopairs'
 
 "" Git related
 Plug 'tpope/vim-fugitive'
