@@ -48,7 +48,6 @@ Plug 'nvim-telescope/telescope.nvim'
 
 "" status line
 Plug 'hoob3rt/lualine.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
 
 "" Editing related
 Plug 'b3nj5m1n/kommentary'
@@ -64,10 +63,8 @@ Plug 'navarasu/onedark.nvim'
 Plug 'projekt0n/github-nvim-theme'
 
 "" NERDTree boi
-Plug 'preservim/nerdtree' " NvimTree
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
 
 call plug#end()
 
@@ -88,10 +85,6 @@ nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>+ :vertical resize +5<CR>
 nnoremap <leader>- :vertical resize -5<CR>
-
-" NERDTree mapings
-nnoremap <leader>pv :NERDTreeToggle<CR>
-nnoremap <leader>pf :NERDTreeFind<CR>
 
 " Git fugitive mappings
 nmap <leader>gs :Git<CR>
