@@ -29,6 +29,8 @@ set signcolumn=yes
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
+let g:kommentary_create_default_mappings = 0
+
 call plug#begin('~/.config/nvim/plugged')
 
 "" LSP related
@@ -49,7 +51,7 @@ Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 
 "" Editing related
-Plug 'preservim/nerdcommenter' " kommenter ?
+Plug 'b3nj5m1n/kommentary'
 Plug 'windwp/nvim-autopairs'
 Plug 'mhartington/formatter.nvim'
 
@@ -69,11 +71,15 @@ Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
-"" THEMING "
+" THEMING
 lua require('github-theme').setup({ themeStyle = "dimmed" })
 
 "" MAPPINGS "
 let mapleader = " "
+
+nmap <leader>cc <Plug>kommentary_line_default
+nmap <leader>c <Plug>kommentary_motion_default
+xmap <leader>c <Plug>kommentary_visual_default
 
 " Navigation mappings
 nnoremap <leader>h :wincmd h<CR>
