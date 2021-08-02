@@ -24,5 +24,5 @@ lualine.setup {
     lualine_z = {'location'}
   },
   tabline = {},
-  extensions = {'fugitive', 'nerdtree'}
+  extensions = {'fugitive', 'nvim-tree'}
 }
