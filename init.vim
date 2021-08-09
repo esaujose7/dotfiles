@@ -16,6 +16,7 @@ set incsearch
 set colorcolumn=100
 set hidden
 set shortmess+=c
+set shortmess-=F
 set cmdheight=2
 set relativenumber
 set nu
@@ -38,6 +39,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'neovim/nvim-lspconfig'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'branch': '0.5-compat', 'do': ':TSUpdate' }
+Plug 'scalameta/nvim-metals'
 
 "" Auto completion
 Plug 'hrsh7th/nvim-compe'
