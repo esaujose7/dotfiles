@@ -26,6 +26,7 @@ set noshowmode
 set nohlsearch
 set scrolloff=8
 set signcolumn=yes
+set completeopt=menuone,noselect
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
@@ -69,7 +70,8 @@ Plug 'kyazdani42/nvim-tree.lua'
 call plug#end()
 
 " THEMING
-lua require('github-theme').setup({ themeStyle = "dimmed" })
+" lua require('github-theme').setup({ themeStyle = "dimmed" })
+colorscheme onedark
 
 "" MAPPINGS "
 let mapleader = " "
