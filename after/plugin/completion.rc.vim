@@ -1,4 +1,4 @@
-set completeopt=menuone,noselect
+autocmd FileType scala setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
 lua << EOF
   require'compe'.setup({
