@@ -1,16 +1,15 @@
-# Usage
+# DOTFILES
 
-Do a symbolic link to where the config file needs to be, for example:
+Eternal WIP since I'm a noob and I'm always playing around with everything
 
-If we pulled this project on our home folder, we would be in: ~/dotfiles
+Things needed to have a good working setup:
+- git and bashrc config to have the branch on prompt
+- nvm and install node --lts `nvm install --lts && nvm use --lts --default`
+- neovim 0.5
+- C compiler for treesitter, in ubuntu gcc and build-essential perhaps ? `sudo apt-get update --fix-missing && sudo apt-get install gcc build-essential`
+- vim plugged
+- symbolic link of gitconfig on home folder `ln -s [file] [destination]`
+- scala -> coursera and make coursera work for you
 
-Then, make a symbolic link of the config file of the .vimrc (or init.vim if we are using neovim):
-
-```bash
-ln -s $HOME/dotfiles/vim/init.vim $HOME/.config/nvim/init.vim
-```
-
-TODO: Have a bash script to install Fira Code Mono Nerd Font (best font ever btw)
-TODO: Have a bash script to install EVERYTHING!!
-
-Eternal WIP since I'm a noob learning dotfiles configs stuff
+PERHAP GOOD IDEAS:
+- Zshell or fish ? take a look at them they look fun
