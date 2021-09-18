@@ -63,7 +63,6 @@ Plug 'lewis6991/gitsigns.nvim'
 
 "" THEMES 
 Plug 'navarasu/onedark.nvim'
-Plug 'projekt0n/github-nvim-theme'
 
 "" NERDTree boi
 Plug 'kyazdani42/nvim-web-devicons'
@@ -72,7 +71,6 @@ Plug 'kyazdani42/nvim-tree.lua'
 call plug#end()
 
 " THEMING
-" lua require('github-theme').setup({ themeStyle = "dimmed" })
 colorscheme onedark
 
 "" MAPPINGS "
@@ -93,3 +91,4 @@ nnoremap <leader>- :vertical resize -5<CR>
 " Git fugitive mappings
 nmap <leader>gs :Git<CR>
 nmap <leader>gc :Git commit<CR>
+nmap <leader>gb :Git blame<CR>
