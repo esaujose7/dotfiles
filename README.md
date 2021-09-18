@@ -9,7 +9,7 @@ Things needed to have a good working setup:
 - C compiler for treesitter, in ubuntu gcc and build-essential perhaps ? `sudo apt-get update --fix-missing && sudo apt-get install gcc build-essential`
 - vim plugged
 - symbolic link of gitconfig on home folder `ln -s [file] [destination]`
-- scala -> coursera and make coursera work for you
+- scala -> coursier and make coursier work for you
 
 PERHAP GOOD IDEAS:
 - Zshell or fish ? take a look at them they look fun
