@@ -1,4 +1,3 @@
-let g:nvim_tree_auto_open = 1 "0 by default, opens the tree when typing `vim $DIR` or `vim`
 let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
 let g:nvim_tree_root_folder_modifier = ':~' "This is the default. See :help filename-modifiers for more options
 let g:nvim_tree_tab_open = 1 "0 by default, will open the tree when entering a new tab and the tree was previously open
