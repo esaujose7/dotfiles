@@ -1,9 +1,0 @@
-[user]
-  name = Esaú Murillo
-	email = esau@teachaway.com
-[github]
-  user = esaujose7
-[credential]
-	helper = cache --timeout=18000
-[core]
-	editor = vim

@@ -16,6 +16,7 @@ set incsearch
 set colorcolumn=100
 set hidden
 set shortmess+=c
+set shortmess-=F
 set cmdheight=2
 set relativenumber
 set nu
@@ -25,106 +26,59 @@ set termguicolors
 set noshowmode
 set nohlsearch
 set scrolloff=8
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
+set signcolumn=yes
+set completeopt=menuone,noselect
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
+let g:kommentary_create_default_mappings = 0
+
 call plug#begin('~/.config/nvim/plugged')
 
-"" web dev related
-Plug 'yuezk/vim-js'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'jparise/vim-graphql'
+"" LSP related
+Plug 'neovim/nvim-lspconfig'
+Plug 'glepnir/lspsaga.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', { 'branch': '0.5-compat', 'do': ':TSUpdate' }
+Plug 'scalameta/nvim-metals'
 
-Plug 'mattn/emmet-vim'
-Plug 'jiangmiao/auto-pairs'
+"" Auto completion
+Plug 'hrsh7th/nvim-compe'
 
-" CoC
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"" telescope bro
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
-let g:coc_global_extensions = [
-      \'coc-tsserver',
-      \'coc-eslint',
-      \'coc-prettier',
-      \'coc-json',
-      \'coc-html',
-      \'coc-css',
-      \'coc-metals'
-      \]
+"" status line
+Plug 'hoob3rt/lualine.nvim'
 
-"" Navigation
-Plug 'jremmen/vim-ripgrep'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-
-"" Commenter
-Plug 'scrooloose/nerdcommenter'
+"" Editing related
+Plug 'b3nj5m1n/kommentary'
+Plug 'windwp/nvim-autopairs'
+Plug 'mhartington/formatter.nvim'
 
 "" Git related
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+Plug 'lewis6991/gitsigns.nvim'
 
 "" THEMES 
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
-Plug 'itchyny/lightline.vim'
+Plug 'navarasu/onedark.nvim'
 
 "" NERDTree boi
-Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
 
 call plug#end()
 
-colorscheme onehalfdark
+" THEMING
+colorscheme onedark
 
-let g:lightline = {
-  \ 'colorscheme': 'onehalfdark',
-  \ 'active': {
-  \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-  \ },
-  \ 'component_function': {
-  \   'gitbranch': 'FugitiveHead',
-  \   'filename': 'LightlineFilename'
-  \ },
-\ }
-
-
-function! LightlineFilename()
-  let root = fnamemodify(get(b:, 'git_dir'), ':h')
-  let path = expand('%:p')
-  if path[:len(root)-1] ==# root
-    return path[len(root)+1:]
-  endif
-  return expand('%')
-endfunction
-
-if executable('rg')
-    let g:rg_derive_root='true'
-endif
-
-let g:javascript_plugin_jsdoc = 1
-let g:vim_jsx_pretty_colorful_config = 1
-
-let g:gitgutter_map_keys = 0
-
-nmap ghs <Plug>(GitGutterStageHunk)
-nmap ghu <Plug>(GitGutterUndoHunk)
-nmap ghp <Plug>(GitGutterPreviewHunk)
-nmap ]c <Plug>(GitGutterNextHunk)
-nmap [c <Plug>(GitGutterPrevHunk)
-
+"" MAPPINGS "
 let mapleader = " "
+
+nmap <leader>cc <Plug>kommentary_line_default
+nmap <leader>c <Plug>kommentary_motion_default
+xmap <leader>c <Plug>kommentary_visual_default
 
 " Navigation mappings
 nnoremap <leader>h :wincmd h<CR>
@@ -134,70 +88,7 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>+ :vertical resize +5<CR>
 nnoremap <leader>- :vertical resize -5<CR>
 
-" NERDTree mapings
-nnoremap <leader>pv :NERDTreeToggle<CR>
-nnoremap <leader>pf :NERDTreeFind<CR>
-nnoremap <Leader>ps :Rg<SPACE>
-
-" Git mappings
-nmap <leader>gs :G<CR>
-nmap <leader>gf :diffget //2<CR>
-nmap <leader>gj :diffget //3<CR>
-
-"FZF
-let $FZF_DEFAULT_COMMAND='rg --files'
-nnoremap <C-p> :Files<CR>
-
-let $FZF_DEFAULT_OPTS='--reverse --color=dark --color=fg:-1,bg:-1,hl:#c678dd,fg+:#ffffff,bg+:#4b5263,hl+:#d858fe --color=info:#98c379,prompt:#61afef,pointer:#be5046,marker:#e5c07b,spinner:#61afef,header:#61afef'
-let g:fzf_layout = { 'window': {'width': 0.8, 'height': 0.8} }
-
-"" CoC stuff
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" tab for trigger completion
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-"
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-" CoC mappings
-nmap <silent><leader>gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent><leader>rr <Plug>(coc-rename)
-nmap <silent><leader>f :CocCommand eslint.executeAutofix<CR>
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Remap <C-f> and <C-b> for scroll float windows/popups.
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-endif
+" Git fugitive mappings
+nmap <leader>gs :Git<CR>
+nmap <leader>gc :Git commit<CR>
+nmap <leader>gb :Git blame<CR>

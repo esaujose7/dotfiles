@@ -3,11 +3,5 @@
 	email = esaujose7@gmail.com
 [github]
   user = esaujose7
-[credential]
-	helper = cache --timeout=18000
 [core]
 	editor = vim
-[includeIf "gitdir:~/dev/"]
-	path = ~/dotfiles/gitconfig.work
-[http]
-	version = HTTP/1.1
