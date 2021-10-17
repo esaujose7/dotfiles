@@ -37,18 +37,21 @@ for _, lsp in ipairs(servers) do
   nvim_lsp[lsp.server].setup(lsp_setup)
 end
 
---metals_config = require'metals'.bare_config
---metals_config.init_options.statusBarProvider = "on"
---metals_config.settings = {
- --  showImplicitArguments = true,
-  -- excludedPackages = {}
---}
+metals_config = require'metals'.bare_config()
 
---metals_config.on_attach = on_attach
+metals_config.init_options.statusBarProvider = "on"
 
---vim.cmd([[hi! link LspReferenceText CursorColumn]])
---vim.cmd([[hi! link LspReferenceRead CursorColumn]])
---vim.cmd([[hi! link LspReferenceWrite CursorColumn]])
+metals_config.settings = {
+  showImplicitArguments = true,
+  excludedPackages = {}
+}
+
+metals_config.on_attach = on_attach
+
+vim.cmd([[hi! link LspReferenceText CursorColumn]])
+vim.cmd([[hi! link LspReferenceRead CursorColumn]])
+vim.cmd([[hi! link LspReferenceWrite CursorColumn]])
+
 EOF
 
 nnoremap <silent> <leader>ws  <cmd>lua require'metals'.hover_worksheet()<CR>
