@@ -19,6 +19,7 @@ end
 
 local servers = { 
   { server = "tsserver" }, 
+  { server = "eslint" },
   { server = "html", capabilities = capabilities },
   { server = "cssls", capabilities = capabilities },
   { server = "jsonls", capabilities = capabilities },
@@ -36,47 +37,13 @@ for _, lsp in ipairs(servers) do
   nvim_lsp[lsp.server].setup(lsp_setup)
 end
 
-local filetypes = {
-    typescript = "eslint",
-    typescriptreact = "eslint",
-    javascript = "eslint",
-    javascriptreact = "eslint",
-}
+metals_config = require'metals'.bare_config()
 
-local linters = {
-    eslint = {
-        sourceName = "eslint",
-        command = "eslint_d",
-        rootPatterns = {".eslintrc.js", ".eslintrc", "package.json"},
-        debounce = 100,
-        args = {"--stdin", "--stdin-filename", "%filepath", "--format", "json"},
-        parseJson = {
-            errorsRoot = "[0].messages",
-            line = "line",
-            column = "column",
-            endLine = "endLine",
-            endColumn = "endColumn",
-            message = "${message} [${ruleId}]",
-            security = "severity"
-        },
-        securities = {[2] = "error", [1] = "warning"}
-    }
-}
-
-nvim_lsp.diagnosticls.setup {
-    on_attach = on_attach,
-    filetypes = vim.tbl_keys(filetypes),
-    init_options = {
-        filetypes = filetypes,
-        linters = linters,
-    }
-}
-
-metals_config = require'metals'.bare_config
 metals_config.init_options.statusBarProvider = "on"
+
 metals_config.settings = {
-   showImplicitArguments = true,
-   excludedPackages = {}
+  showImplicitArguments = true,
+  excludedPackages = {}
 }
 
 metals_config.on_attach = on_attach

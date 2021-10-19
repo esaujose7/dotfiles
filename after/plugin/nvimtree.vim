@@ -52,6 +52,10 @@ let g:nvim_tree_icons = {
     \   }
     \ }
 
+lua << EOF
+require'nvim-tree'.setup()
+EOF
+
 nnoremap <leader>pv :NvimTreeToggle<CR>
 nnoremap <leader>pf :NvimTreeFindFile<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
