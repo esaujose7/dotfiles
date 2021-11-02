@@ -42,7 +42,25 @@ cmp.setup({
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-  }, {
     { name = 'buffer' },
-  })
+    { name = 'luasnip' },
+    { name = 'rg' },
+    { name = 'nvim_lua' }
+  }),
+  formatting = {
+    format = require("lspkind").cmp_format({
+      with_text = true,
+      menu = ({
+        nvim_lsp = "[LSP]",
+        buffer = "[Buffer]",
+        luasnip = "[LuaSnip]",
+        rg = "[RG]",
+        nvim_lua = "[Lua]",
+      })
+    }),
+  },
+})
+
+require("luasnip/loaders/from_vscode").lazy_load({
+  paths = { "~/.config/nvim/plugged/friendly-snippets" },
 })
