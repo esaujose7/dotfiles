@@ -27,7 +27,7 @@ set noshowmode
 set nohlsearch
 set scrolloff=8
 set signcolumn=yes
-set completeopt=menuone,noselect
+set completeopt=menu,menuone,noselect
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
@@ -42,7 +42,15 @@ Plug 'nvim-treesitter/nvim-treesitter', { 'branch': '0.5-compat', 'do': ':TSUpda
 Plug 'scalameta/nvim-metals'
 
 "" Auto completion
-Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'hrsh7th/cmp-nvim-lua'
+Plug 'lukas-reineke/cmp-rg'
+Plug 'onsails/lspkind-nvim'
+Plug 'rafamadriz/friendly-snippets'
 
 "" telescope bro
 Plug 'nvim-lua/popup.nvim'
