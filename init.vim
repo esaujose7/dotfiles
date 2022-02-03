@@ -37,7 +37,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 "" LSP related
 Plug 'neovim/nvim-lspconfig'
-Plug 'glepnir/lspsaga.nvim'
+Plug 'tami5/lspsaga.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'branch': '0.5-compat', 'do': ':TSUpdate' }
 Plug 'scalameta/nvim-metals'
 
