@@ -7,6 +7,7 @@ let g:enable = 1 "0 by default, will show lsp diagnostics in the signcolumn. See
 let g:nvim_tree_icon_padding = ' ' "one space by default, used for rendering the space between the icon and the filename. Use with caution, it could break rendering if you set an empty string depending on your font.
 let g:update_cwd = 1 "0 by default, will update the tree cwd when changing nvim's directory (DirChanged event). Behaves strangely with autochdir set.
 let g:nvim_tree_special_files = { 'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1 } " List of filenames that gets highlighted with NvimTreeSpecialFile
+let g:git = { 'ignore': 0 }
 let g:nvim_tree_show_icons = {
     \ 'git': 1,
     \ 'folders': 1,
@@ -52,7 +53,13 @@ let g:nvim_tree_icons = {
     \ }
 
 lua << EOF
-require'nvim-tree'.setup()
+require'nvim-tree'.setup({
+  git = {
+    enable = true,
+    ignore = false,
+    timeout = 500,
+  }
+})
 EOF
 
 nnoremap <leader>pv :NvimTreeToggle<CR>
