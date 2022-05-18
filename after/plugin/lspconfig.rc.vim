@@ -44,6 +44,8 @@ metals_config.settings = {
   showImplicitArguments = true,
   excludedPackages = {}
 }
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+metals_config.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 metals_config.on_attach = on_attach
 
@@ -57,5 +59,6 @@ nnoremap <silent> <leader>a   <cmd>lua require'metals'.open_all_diagnostics()<CR
 
 augroup lsp
   au!
-  au FileType scala,sbt lua require('metals').initialize_or_attach(metals_config)
+  au FileType scala setlocal omnifunc=v:lua.vim.lsp.omnifunc
+  au FileType java,scala,sbt lua require('metals').initialize_or_attach(metals_config)
 augroup end
