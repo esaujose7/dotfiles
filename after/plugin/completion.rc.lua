@@ -61,6 +61,18 @@ cmp.setup({
   },
 })
 
+cmp.setup.cmdline(':', {
+  sources = {
+    { name = 'cmdline' }
+  }
+})
+
+cmp.setup.cmdline('/', {
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
 require("luasnip/loaders/from_vscode").lazy_load({
   paths = { "~/.config/nvim/plugged/friendly-snippets" },
 })
