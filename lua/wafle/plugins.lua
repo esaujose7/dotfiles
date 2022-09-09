@@ -7,7 +7,24 @@ return require('packer').startup(function(use)
 
   -- LSP related
   use 'neovim/nvim-lspconfig'
-  use 'tami5/lspsaga.nvim'
+  use({
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+    config = function()
+      local saga = require("lspsaga")
+
+      saga.init_lsp_saga {}
+
+      local nnoremap = require("wafle.keymap").nnoremap
+
+      nnoremap("<leader>cd", ":Lspsaga show_line_diagnostics<CR>")
+      nnoremap("]e", ":Lspsaga diagnostic_jump_next<CR>")
+      nnoremap("[e", ":Lspsaga diagnostic_jump_prev<CR>")
+      nnoremap("K", ":Lspsaga hover_doc<CR>")
+      nnoremap("<leader>rr", ":Lspsaga rename<CR>")
+      nnoremap("<leader>cd", ":Lspsaga show_line_diagnostics<CR>")
+    end,
+  })
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
   -- Auto completion
