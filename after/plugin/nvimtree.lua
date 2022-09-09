@@ -1,4 +1,5 @@
-lua << EOF
+local nnoremap = require("wafle.keymap").nnoremap
+
 require'nvim-tree'.setup({
   open_on_tab = true,
   sync_root_with_cwd = true,
@@ -15,8 +16,7 @@ require'nvim-tree'.setup({
     timeout = 500,
   }
 })
-EOF
 
-nnoremap <leader>pv :NvimTreeToggle<CR>
-nnoremap <leader>pf :NvimTreeFindFile<CR>
-nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap("<leader>pv", ":NvimTreeToggle<CR>")
+nnoremap("<leader>pf", ":NvimTreeFindFile<CR>")
+nnoremap("<leader>r", ":NvimTreeRefresh<CR>")

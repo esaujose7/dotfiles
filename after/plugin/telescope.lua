@@ -1,7 +1,6 @@
-nnoremap <silent> <C-p> <Cmd>Telescope find_files<CR>
-nnoremap <silent> <leader>ps <Cmd>Telescope live_grep<CR>
 
-lua <<EOF
+local nnoremap = require("wafle.keymap").nnoremap
+
 local actions = require('telescope.actions')
 
 require('telescope').setup {
@@ -14,4 +13,6 @@ require('telescope').setup {
     },
   }
 }
-EOF
+
+nnoremap("<C-p>", "<Cmd>Telescope find_files<CR>")
+nnoremap("<leader>ps", "<Cmd>Telescope find_files<CR>")

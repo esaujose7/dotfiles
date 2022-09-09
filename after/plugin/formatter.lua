@@ -1,4 +1,5 @@
-lua << EOF
+local nnoremap = require("wafle.keymap").nnoremap
+
 local eslint = function()
   return {
     exe = "eslint_d",
@@ -16,7 +17,5 @@ require('formatter').setup({
     typescriptreact = {eslint},
   }
 })
-EOF
 
-" Provided by setup function
-nnoremap <silent> <leader>f :Format<CR>
+nnoremap("<silent><leader>f", ":Format<CR>")
