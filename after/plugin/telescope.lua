@@ -15,4 +15,4 @@ require('telescope').setup {
 }
 
 nnoremap("<C-p>", "<Cmd>Telescope find_files<CR>")
-nnoremap("<leader>ps", "<Cmd>Telescope find_files<CR>")
+nnoremap("<leader>ps", "<Cmd>Telescope live_grep<CR>")
