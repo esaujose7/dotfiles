@@ -18,4 +18,4 @@ require('formatter').setup({
   }
 })
 
-nnoremap("<silent><leader>f", ":Format<CR>")
+nnoremap("<leader>f", ":Format<CR>")
