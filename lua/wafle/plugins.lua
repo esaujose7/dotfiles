@@ -31,7 +31,10 @@ return require('packer').startup(function(use)
 
   -- Editing related
   use 'b3nj5m1n/kommentary'
-  use 'windwp/nvim-autopairs'
+  use {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
   use 'mhartington/formatter.nvim'
 
   -- Git related
