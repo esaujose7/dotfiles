@@ -13,12 +13,12 @@ require'nvim-tree'.setup({
     adaptive_size = true,
   },
   diagnostics = {
-    enable = true
+    enable = true,
   },
   git = {
     ignore = false,
     timeout = 500,
-  }
+  },
 })
 
 nnoremap("<leader>pv", ":NvimTreeToggle<CR>")
