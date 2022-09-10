@@ -8,6 +8,10 @@ require'nvim-tree'.setup({
     highlight_git = true,
     group_empty = true,
   },
+  view = {
+    relativenumber = true,
+    adaptive_size = true,
+  },
   diagnostics = {
     enable = true
   },
