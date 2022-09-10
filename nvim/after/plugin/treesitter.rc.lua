@@ -1,8 +1,3 @@
-if !exists('g:loaded_nvim_treesitter')
-  finish
-endif
-
-lua <<EOF
 require 'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
@@ -16,9 +11,13 @@ require 'nvim-treesitter.configs'.setup {
     "bash",
     "tsx",
     "css",
+    "go",
     "dockerfile",
     "graphql",
     "html",
+    "java",
+    "jsdoc",
+    "markdown",
     "javascript",
     "jsdoc",
     "json",
@@ -31,4 +30,3 @@ require 'nvim-treesitter.configs'.setup {
     "yaml"
   }
 }
-EOF
