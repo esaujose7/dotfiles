@@ -7,5 +7,5 @@ end
 
 hl("ColorColumn", {
   ctermbg = 0,
-  bg = "lightgrey",
+  bg = "#2d3149",
 })
