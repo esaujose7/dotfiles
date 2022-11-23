@@ -17,6 +17,7 @@ local servers = {
   { server = "jsonls", capabilities = true },
   { server = "dockerls" },
   { server = "graphql" },
+  { server = "pyright" },
 }
 
 for _, lsp in ipairs(servers) do
