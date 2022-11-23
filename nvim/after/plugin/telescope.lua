@@ -1,4 +1,3 @@
-
 local nnoremap = require("wafle.keymap").nnoremap
 
 local actions = require('telescope.actions')
