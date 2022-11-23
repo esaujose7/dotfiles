@@ -1,4 +1,3 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
@@ -26,6 +25,13 @@ return require('packer').startup(function(use)
     end,
   })
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {}
+    end
+  }
 
   -- Auto completion
   use 'hrsh7th/nvim-cmp'
