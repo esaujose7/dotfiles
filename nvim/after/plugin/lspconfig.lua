@@ -27,7 +27,7 @@ for _, lsp in ipairs(servers) do
     capabilities.textDocument.completion.completionItem.snippetSupport = true
   end
 
-  capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+  capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
   lsp_setup["capabilities"] = capabilities
 
   nvim_lsp[lsp.server].setup(lsp_setup)
