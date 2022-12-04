@@ -9,3 +9,9 @@ nnoremap("<leader>k", ":wincmd k<CR>")
 nnoremap("<leader>l", ":wincmd l<CR>")
 nnoremap("<leader>+", ":vertical resize +5<CR>")
 nnoremap("<leader>-", ":vertical resize -5<CR>")
+
+nnoremap("<C-d>", "<C-d>zz")
+nnoremap("<C-u>", "<C-u>zz")
+
+nnoremap("n", "nzz")
+nnoremap("N", "Nzz")
