@@ -6,30 +6,44 @@ return require('packer').startup(function(use)
 
   -- LSP related
   use 'neovim/nvim-lspconfig'
-  use({
-    "glepnir/lspsaga.nvim",
-    branch = "main",
-    config = function()
-      local saga = require("lspsaga")
-
-      saga.init_lsp_saga {}
-
-      local nnoremap = require("wafle.keymap").nnoremap
-
-      nnoremap("<leader>cd", ":Lspsaga show_line_diagnostics<CR>")
-      nnoremap("]e", ":Lspsaga diagnostic_jump_next<CR>")
-      nnoremap("[e", ":Lspsaga diagnostic_jump_prev<CR>")
-      nnoremap("K", ":Lspsaga hover_doc<CR>")
-      nnoremap("<leader>rr", ":Lspsaga rename<CR>")
-      nnoremap("<leader>cd", ":Lspsaga show_line_diagnostics<CR>")
-    end,
-  })
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use {
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
       require("trouble").setup {}
+    end
+  }
+  use {
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function()
+      local null_ls = require("null-ls")
+      null_ls.setup({
+          sources = {
+              null_ls.builtins.diagnostics.eslint_d,
+          },
+      })
+    end,
+    requires = { "nvim-lua/plenary.nvim" },
+  }
+  use {
+    "lewis6991/hover.nvim",
+    config = function()
+        require("hover").setup {
+            init = function()
+                -- Require providers
+                require("hover.providers.lsp")
+            end,
+            preview_opts = {
+                border = nil
+            },
+            -- Whether the contents of a currently open hover window should be moved
+            -- to a :h preview-window when pressing the hover keymap.
+            preview_window = false,
+            title = true
+        }
+        -- Setup keymaps
+        vim.keymap.set("n", "K", require("hover").hover, {desc = "hover.nvim"})
     end
   }
 
