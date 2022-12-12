@@ -29,6 +29,7 @@ local servers = {
   { server = "html", capabilities = true },
   { server = "cssls", capabilities = true },
   { server = "jsonls", capabilities = true },
+  { server = "emmet_ls", capabilities = true },
   { server = "dockerls" },
   { server = "graphql" },
   { server = "pyright" },
