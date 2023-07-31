@@ -12,6 +12,10 @@ require 'nvim-treesitter.configs'.setup {
     "tsx",
     "css",
     "go",
+    "c",
+    "make",
+    "markdown",
+    "clojure",
     "dockerfile",
     "graphql",
     "html",
@@ -26,6 +30,7 @@ require 'nvim-treesitter.configs'.setup {
     "python",
     "scala",
     "scss",
+    "sql",
     "typescript",
     "yaml"
   }
