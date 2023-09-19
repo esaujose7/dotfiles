@@ -67,5 +67,6 @@ return require('packer').startup(function(use)
 
   -- THEMES 
   use 'navarasu/onedark.nvim'
+  use { "catppuccin/nvim", as = "catppuccin" }
   use 'folke/tokyonight.nvim'
 end)
