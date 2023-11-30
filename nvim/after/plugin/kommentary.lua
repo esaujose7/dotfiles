@@ -1,9 +1,5 @@
-local Remap = require("wafle.keymap")
-local nmap = Remap.nmap
-local xmap = Remap.xmap
-
 vim.g.kommentary_create_default_mappings = 0
 
-nmap("<leader>cc", "<Plug>kommentary_line_default")
-nmap("<leader>c", "<Plug>kommentary_motion_default")
-xmap("<leader>c", "<Plug>kommentary_visual_default")
+vim.keymap.set('n', '<leader>cc', "<Plug>kommentary_line_default", { noremap = false })
+vim.keymap.set('n', '<leader>c', "<Plug>kommentary_motion_default", { noremap = false })
+vim.keymap.set('x', '<leader>c', "<Plug>kommentary_visual_default", { noremap = false })

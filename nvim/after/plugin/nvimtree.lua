@@ -1,5 +1,3 @@
-local nnoremap = require("wafle.keymap").nnoremap
-
 require'nvim-tree'.setup({
   open_on_tab = true,
   sync_root_with_cwd = true,
@@ -21,6 +19,6 @@ require'nvim-tree'.setup({
   },
 })
 
-nnoremap("<leader>pv", ":NvimTreeToggle<CR>")
-nnoremap("<leader>pf", ":NvimTreeFindFile<CR>")
-nnoremap("<leader>r", ":NvimTreeRefresh<CR>")
+vim.keymap.set('n', '<leader>pv', ':NvimTreeToggle<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>pf', ':NvimTreeFindFile<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>r', ':NvimTreeRefresh<CR>', { noremap = true })

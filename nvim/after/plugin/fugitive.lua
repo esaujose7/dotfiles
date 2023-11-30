@@ -1,4 +1,2 @@
-local nmap = require("wafle.keymap").nmap
-
-nmap("<leader>gs", ":Git<CR>")
-nmap("<leader>gc", ":Git commit<CR>")
+vim.keymap.set('n', '<leader>gs', ":Git<CR>", { noremap = false })
+vim.keymap.set('n', '<leader>gc', ":Git commit<CR>", { noremap = false })

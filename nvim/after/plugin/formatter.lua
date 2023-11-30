@@ -1,5 +1,3 @@
-local nnoremap = require("wafle.keymap").nnoremap
-
 local eslint = function()
   return {
     exe = "eslint_d",
@@ -18,4 +16,4 @@ require('formatter').setup({
   }
 })
 
-nnoremap("<leader>f", ":Format<CR>")
+vim.keymap.set('n', '<leader>f', ":Format<CR>", { noremap = true })
