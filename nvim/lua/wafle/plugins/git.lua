@@ -55,7 +55,6 @@ return {
           map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
         end
       }
-    end,
-    lazy = true
+    end
   }
 }
