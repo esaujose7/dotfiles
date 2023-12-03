@@ -1,5 +1,3 @@
--- vim.opt.guicursor = ""
-
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.errorbells = false
@@ -24,10 +22,8 @@ vim.opt.shortmess:remove("F")
 vim.opt.updatetime = 300
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
-vim.opt.showmode = false 
+vim.opt.showmode = false
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.splitright = true
-
-vim.g.mapleader = " "

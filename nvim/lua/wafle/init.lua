@@ -1,5 +1,7 @@
 require("wafle.set")
 
+vim.g.mapleader = " "
+
 vim.keymap.set('n', '<leader>h', ':wincmd h<CR>', { noremap = true })
 vim.keymap.set('n', '<leader>j', ":wincmd j<CR>", { noremap = true })
 vim.keymap.set('n', '<leader>k', ":wincmd k<CR>", { noremap = true })
@@ -25,4 +27,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup("wafle.plugins")
+require('lazy').setup("wafle.plugins", {
+  change_detection = {
+    -- automatically check for config file changes and reload the ui
+    enabled = false,
+    notify = true, -- get a notification when changes are found
+  },
+})

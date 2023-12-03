@@ -4,8 +4,7 @@ return {
     keys = {
       {'<leader>gs', ":Git<CR>", { noremap = false }},
       {'<leader>gc', ":Git commit<CR>", { noremap = false }}
-    },
-    lazy = true
+    }
   },
   {
     'lewis6991/gitsigns.nvim',
