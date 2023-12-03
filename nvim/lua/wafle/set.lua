@@ -22,7 +22,7 @@ vim.opt.shortmess:remove("F")
 vim.opt.updatetime = 300
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
-vim.opt.showmode = false 
+vim.opt.showmode = false
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.completeopt = "menu,menuone,noselect"

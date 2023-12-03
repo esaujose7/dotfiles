@@ -13,7 +13,7 @@ return {
       'lukas-reineke/cmp-rg',
       'onsails/lspkind-nvim',
     },
-    config = function() 
+    config = function()
       local cmp = require'cmp'
 
       local has_words_before = function()

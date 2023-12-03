@@ -1,8 +1,7 @@
 return {
-  'nvim-tree/nvim-web-devicons',
   {
     'nvim-tree/nvim-tree.lua',
-    init = function() 
+    init = function()
       vim.g.loaded_netrw = 1
       vim.g.loaded_netrwPlugin = 1
     end,
