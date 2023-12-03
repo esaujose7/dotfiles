@@ -18,6 +18,7 @@ return {
       require("mason-lspconfig").setup {
         ensure_installed = {
           "cssls",
+          "cssmodules_ls",
           "html",
           "graphql",
           "dockerls",
@@ -61,6 +62,7 @@ return {
 
       local servers = {
         { server = "tsserver" },
+        { server = "cssmodules_ls" },
         { server = "html", capabilities = true },
         { server = "cssls", capabilities = true },
         { server = "jsonls", capabilities = true },
