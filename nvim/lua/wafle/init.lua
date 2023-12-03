@@ -1,5 +1,7 @@
 require("wafle.set")
 
+vim.g.mapleader = " "
+
 vim.keymap.set('n', '<leader>h', ':wincmd h<CR>', { noremap = true })
 vim.keymap.set('n', '<leader>j', ":wincmd j<CR>", { noremap = true })
 vim.keymap.set('n', '<leader>k', ":wincmd k<CR>", { noremap = true })
