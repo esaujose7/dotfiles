@@ -26,7 +26,8 @@ return {
           "jsonls",
           "pyright",
           "emmet_ls",
-          "lua_ls"
+          "lua_ls",
+          "jdtls"
         }
       }
     end
@@ -35,6 +36,7 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = {
       "williamboman/mason.nvim",
+      "mfussenegger/nvim-jdtls",
     },
     config = function()
       local nvim_lsp = require('lspconfig')
