@@ -22,7 +22,7 @@ return {
           "html",
           "graphql",
           "dockerls",
-          "tsserver",
+          "ts_ls",
           "jsonls",
           "pyright",
           "emmet_ls",
