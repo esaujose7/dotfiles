@@ -1,5 +1,4 @@
 return {
-  'nvim-lua/popup.nvim',
   'nvim-lua/plenary.nvim',
   {
     'nvim-telescope/telescope.nvim',
@@ -21,7 +20,7 @@ return {
       {"<C-p>", "<Cmd>Telescope find_files<CR>"},
       {"<leader>ps", "<Cmd>Telescope live_grep<CR>"}
     },
-    tag = '0.1.5',
+    tag = '0.1.8',
     dependencies = { 'nvim-lua/plenary.nvim' }
   }
 }
