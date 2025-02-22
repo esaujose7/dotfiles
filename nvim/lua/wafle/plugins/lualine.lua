@@ -25,7 +25,7 @@ return {
           lualine_z = {'location'}
         },
         tabline = {},
-        extensions = {'fugitive', 'nvim-tree'}
+        extensions = {'fugitive', 'nvim-tree', 'lazy', 'mason'}
       }
     end
   }
