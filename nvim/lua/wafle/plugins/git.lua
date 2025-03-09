@@ -3,7 +3,9 @@ return {
     'tpope/vim-fugitive',
     keys = {
       {'<leader>gs', ":Git<CR>", { noremap = false }},
-      {'<leader>gc', ":Git commit<CR>", { noremap = false }}
+      {'<leader>gc', ":Git commit<CR>", { noremap = false }},
+      {'<leader>gb', ":Git blame<CR>", { noremap = false }},
+      {'<leader>gl', ":Git log<CR>", { noremap = false }}
     }
   },
   {
