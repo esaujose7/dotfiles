@@ -63,7 +63,7 @@ return {
       end
 
       local servers = {
-        { server = "tsserver" },
+        { server = "ts_ls" },
         { server = "cssmodules_ls" },
         { server = "html", capabilities = true },
         { server = "cssls", capabilities = true },
