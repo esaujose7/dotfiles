@@ -13,24 +13,5 @@ vim.keymap.set('n', "<C-u>", '<C-u>zz', { noremap = true })
 vim.keymap.set('n', 'n', "nzz", { noremap = true })
 vim.keymap.set('n', 'N', "Nzz", { noremap = true })
 
--- Bootstrap lazy
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
-require('lazy').setup("wafle.plugins", {
-  change_detection = {
-    -- automatically check for config file changes and reload the ui
-    enabled = false,
-    notify = true, -- get a notification when changes are found
-  },
-})
+require("wafle.lazy")
+require("wafle.lsp")
