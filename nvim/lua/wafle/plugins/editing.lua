@@ -14,4 +14,15 @@ return {
       { "<leader>c", "<Plug>kommentary_visual_default", mode = "x" }
     }
   },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    config = function()
+      require("ibl").setup({
+        scope = {
+          show_start = false
+        }
+      })
+    end
+  }
 }

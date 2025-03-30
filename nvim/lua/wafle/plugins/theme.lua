@@ -1,6 +1,4 @@
 return {
-  'navarasu/onedark.nvim',
-  'folke/tokyonight.nvim',
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -18,4 +16,11 @@ return {
     end,
     priority = 1000
   },
+  {
+    'NvChad/nvim-colorizer.lua',
+    config = function()
+      require 'colorizer'.setup()
+    end
+  }
 }
+
