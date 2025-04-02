@@ -1,20 +1,16 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
-    config = function()
-      local actions = require('telescope.actions')
-
-      require('telescope').setup {
-        defaults = {
-         sorting_strategy = "ascending",
-         mappings = {
-            n = {
-              ["q"] = actions.close
-            },
+    opts = {
+      defaults = {
+        sorting_strategy = "ascending",
+        mappings = {
+          n = {
+            ["q"] = require('telescope.actions').close
           },
-        }
+        },
       }
-    end,
+    },
     keys = {
       {"<C-p>", "<Cmd>Telescope find_files<CR>"},
       {"<leader>ps", "<Cmd>Telescope live_grep<CR>"}
@@ -24,34 +20,32 @@ return {
   },
   {
     'nvim-tree/nvim-tree.lua',
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
     init = function()
       vim.g.loaded_netrw = 1
       vim.g.loaded_netrwPlugin = 1
     end,
-    config = function()
-      require'nvim-tree'.setup({
-        open_on_tab = true,
-        sync_root_with_cwd = true,
-        renderer = {
-          add_trailing = true,
-          highlight_git = true,
-          group_empty = true,
-        },
-        view = {
-          relativenumber = true,
-          adaptive_size = true,
-        },
-        diagnostics = {
-          enable = true,
-        },
-        git = {
-          ignore = false,
-          timeout = 500,
-        },
-      })
-    end,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
+    opts = {
+      open_on_tab = true,
+      sync_root_with_cwd = true,
+      renderer = {
+        add_trailing = true,
+        highlight_git = true,
+        group_empty = true,
+      },
+      view = {
+        relativenumber = true,
+        adaptive_size = true,
+      },
+      diagnostics = {
+        enable = true,
+      },
+      git = {
+        ignore = false,
+        timeout = 500,
+      },
     },
     keys = {
       { "<leader>pv", ':NvimTreeToggle<CR>', { noremap = true } },
