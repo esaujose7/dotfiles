@@ -8,9 +8,6 @@ return {
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
       'petertriho/cmp-git',
-      'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip',
-      'lukas-reineke/cmp-rg',
       'onsails/lspkind-nvim',
     },
     config = function()
@@ -22,11 +19,6 @@ return {
       end
 
       cmp.setup({
-       snippet = {
-          expand = function(args)
-            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-          end,
-        },
         mapping = {
           ['<C-d>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -53,9 +45,7 @@ return {
         },
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
-          { name = 'luasnip' }, -- For luasnip users.
           { name = 'buffer' },
-          { name = 'rg' },
           { name = 'nvim_lua' }
         }),
         formatting = {
@@ -64,7 +54,6 @@ return {
             menu = ({
               nvim_lsp = "[LSP]",
               buffer = "[Buffer]",
-              rg = "[RG]",
               nvim_lua = "[Lua]",
             })
           }),
