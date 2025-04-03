@@ -1,7 +1,8 @@
 return {
   {
-    "windwp/nvim-autopairs",
-    config = function() require("nvim-autopairs").setup {} end
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true
   },
   {
     'b3nj5m1n/kommentary',
@@ -12,6 +13,33 @@ return {
       { "<leader>cc", "<Plug>kommentary_line_default" },
       { "<leader>c", "<Plug>kommentary_motion_default" },
       { "<leader>c", "<Plug>kommentary_visual_default", mode = "x" }
+    }
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {
+      scope = {
+        show_start = false
+      }
+    }
+  },
+  {
+    "lewis6991/hover.nvim",
+    opts = {
+      init = function()
+        -- Require providers
+        require("hover.providers.lsp")
+        require('hover.providers.fold_preview')
+        require('hover.providers.diagnostic')
+        require('hover.providers.man')
+      end,
+      preview_opts = {
+        border = 'single'
+      },
+      -- Whether the contents of a currently open hover window should be moved
+      -- to a :h preview-window when pressing the hover keymap.
+      preview_window = false,
     }
   },
 }

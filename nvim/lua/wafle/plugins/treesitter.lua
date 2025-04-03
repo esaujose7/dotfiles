@@ -3,7 +3,9 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     config = function()
-      require 'nvim-treesitter.configs'.setup {
+      local configs = require("nvim-treesitter.configs")
+
+      configs.setup({
         highlight = { enable = true },
         indent = { enable = true },
         ensure_installed = {
@@ -49,7 +51,7 @@ return {
           "rust",
           "yaml"
         }
-      }
+      })
     end
   }
 }
