@@ -3,7 +3,7 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     config = function()
-      vim.cmd.colorscheme "catppuccin-macchiato" -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+      vim.cmd.colorscheme "catppuccin-mocha" -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 
       local hl = function(thing, opts)
         vim.api.nvim_set_hl(0, thing, opts)
