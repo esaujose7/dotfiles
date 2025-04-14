@@ -23,5 +23,5 @@ vim.lsp.config("*", {
 
 vim.lsp.enable({
   'ts', 'cssls', 'cssmodules_ls', 'dockerls',
-  'graphql', 'html', 'jsonls', 'lua_ls'
+  'graphql', 'html', 'jsonls', 'lua_ls', 'php'
 })
