@@ -2,8 +2,12 @@ return {
   {
     "williamboman/mason.nvim",
     dependencies = {
-      "williamboman/mason-lspconfig.nvim",
+      {
+        "williamboman/mason-lspconfig.nvim",
+        version = "v1.32.0"
+      },
     },
+    tag = "v1.11.0",
     config = function()
       require("mason").setup {
         ui = {
