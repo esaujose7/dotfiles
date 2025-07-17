@@ -1,5 +1,3 @@
-local lsp = require 'wafle.lsp'
-
 local function set_python_path(path)
   local clients = vim.lsp.get_clients {
     bufnr = vim.api.nvim_get_current_buf(),
@@ -50,6 +48,6 @@ return {
       nargs = 1,
       complete = 'file',
     })
-    lsp.on_attach()
+    require 'wafle.util'.on_attach()
   end,
 }

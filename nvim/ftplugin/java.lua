@@ -64,3 +64,4 @@ local config = {
 }
 
 require('jdtls').start_or_attach(config)
+require('wafle.util').on_attach()

@@ -1,25 +1,8 @@
-local M = {}
-
-function M.on_attach()
-  local opts = { noremap = true, silent = true }
-
-  -- LSP actions
-  vim.keymap.set('n', '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-  vim.keymap.set('n', '<leader>rr', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-  vim.keymap.set('n', 'K', require('hover').hover, {desc = 'hover.nvim'})
-  vim.keymap.set("n", "<C-n>", function() require("hover").hover_switch("next") end, {desc = "hover.nvim (next source)"})
-
-  -- Diagnostics
-  vim.keymap.set('n', '<leader>cd', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
-  vim.keymap.set('n', '[e', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
-  vim.keymap.set('n', ']e', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
-end
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 vim.lsp.config("*", {
-  on_attach = M.on_attach,
+  on_attach = require 'wafle.util'.on_attach,
   capabilities = capabilities,
 })
 
