@@ -1,4 +1,6 @@
-local on_attach = function()
+local M = {}
+
+function M.on_attach()
   local opts = { noremap = true, silent = true }
 
   -- LSP actions
@@ -17,11 +19,13 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 vim.lsp.config("*", {
-  on_attach = on_attach,
+  on_attach = M.on_attach,
   capabilities = capabilities,
 })
 
 vim.lsp.enable({
   'ts', 'cssls', 'cssmodules_ls', 'dockerls',
-  'graphql', 'html', 'jsonls', 'lua_ls', 'php'
+  'graphql', 'html', 'jsonls', 'lua_ls', 'php', 'python'
 })
+
+return M

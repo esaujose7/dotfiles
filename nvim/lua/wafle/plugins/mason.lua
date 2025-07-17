@@ -32,7 +32,8 @@ return {
           "emmet_ls",
           "lua_ls",
           "phpactor",
-          "jdtls"
+          "jdtls",
+          "pyright"
         }
       }
     end
