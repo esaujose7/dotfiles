@@ -11,3 +11,8 @@ ln -s $HOME/dotfiles/nvim $HOME/.config/nvim
 ```bash
 ln -s $HOME/dotfiles/tmux $HOME/.config/tmux
 ```
+
+```bash
+ln -s ~/dotfiles/ghostty ~/.config/ghostty
+```
+
