@@ -43,7 +43,7 @@ return {
       })
     end,
     keys = {
-      {"<leader>f", ":Format<CR>", { noremap = true, desc = "Format buffer" }}
+      {"<leader>f", ":Format<CR>", desc = "Format buffer"}
     }
   }
 }
