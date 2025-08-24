@@ -1,12 +1,14 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    tag = '0.1.8',
     opts = {
       defaults = {
         sorting_strategy = "ascending",
         mappings = {
           n = {
-            ["q"] = require('telescope.actions').close
+            ["q"] = require('telescope.actions').close,
           },
         },
       }
@@ -14,9 +16,10 @@ return {
     keys = {
       {"<C-p>", "<Cmd>Telescope find_files<CR>"},
       {"<leader>ps", "<Cmd>Telescope live_grep<CR>"},
-      {"<leader>pd",
+      {
+        "<leader>pd",
         function()
-          function escape(keys)
+          local function escape(keys)
             return vim.api.nvim_replace_termcodes(keys, true, false, true)
           end
 
@@ -30,8 +33,6 @@ return {
       {"<leader>pb", "<Cmd>Telescope buffers<CR>"},
       {"<leader>ph", "<Cmd>Telescope help_tags<CR>"}
     },
-    tag = '0.1.8',
-    dependencies = { 'nvim-lua/plenary.nvim' }
   },
   {
     'nvim-tree/nvim-tree.lua',
