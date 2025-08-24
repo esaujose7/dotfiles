@@ -10,9 +10,9 @@ return {
       vim.g.kommentary_create_default_mappings = 0
     end,
     keys = {
-      { "<leader>cc", "<Plug>kommentary_line_default" },
-      { "<leader>c", "<Plug>kommentary_motion_default" },
-      { "<leader>c", "<Plug>kommentary_visual_default", mode = "x" }
+      { "<leader>cc", "<Plug>kommentary_line_default", desc = "Comment/uncomment current line" },
+      { "<leader>c", "<Plug>kommentary_motion_default", desc = "Comment/uncomment with motion" },
+      { "<leader>c", "<Plug>kommentary_visual_default", mode = "x", desc = "Comment/uncomment selection" }
     }
   },
   {

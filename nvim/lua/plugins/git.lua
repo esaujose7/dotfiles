@@ -2,10 +2,10 @@ return {
   {
     'tpope/vim-fugitive',
     keys = {
-      {'<leader>gs', ":Git<CR>", { noremap = false }},
-      {'<leader>gc', ":Git commit<CR>", { noremap = false }},
-      {'<leader>gb', ":Git blame<CR>", { noremap = false }},
-      {'<leader>gl', ":Git log<CR>", { noremap = false }}
+      {'<leader>gs', ":Git<CR>", { noremap = false, desc = "Git status (Fugitive)" }},
+      {'<leader>gc', ":Git commit<CR>", { noremap = false, desc = "Git commit (Fugitive)" }},
+      {'<leader>gb', ":Git blame<CR>", { noremap = false, desc = "Git blame (Fugitive)" }},
+      {'<leader>gl', ":Git log<CR>", { noremap = false, desc = "Git log (Fugitive)" }}
     }
   },
   {
@@ -23,31 +23,41 @@ return {
 
           -- Navigation
           map('n', ']c', function()
-            if vim.wo.diff then return ']c' end
-            vim.schedule(function() gitsigns.next_hunk() end)
-            return '<Ignore>'
-          end, {expr=true})
+            if vim.wo.diff then
+              vim.cmd.normal({']c', bang = true})
+            else
+              gitsigns.nav_hunk('next')
+            end
+          end, { desc = "Go to Next Hunk" })
 
           map('n', '[c', function()
-            if vim.wo.diff then return '[c' end
-            vim.schedule(function() gitsigns.prev_hunk() end)
-            return '<Ignore>'
-          end, {expr=true})
+            if vim.wo.diff then
+              vim.cmd.normal({'[c', bang = true})
+            else
+              gitsigns.nav_hunk('prev')
+            end
+          end, { desc = "Go to Previous Hunk"})
 
-          -- Actions
-          map('n', 'ghs', gitsigns.stage_hunk)
-          map('n', 'ghs', function() gitsigns.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
-          map('n', 'ghu', gitsigns.undo_stage_hunk)
-          map('n', 'ghr', gitsigns.reset_hunk)
-          map('n', 'ghr', function() gitsigns.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
-          map('n', 'ghR', gitsigns.reset_buffer)
-          map('n', 'ghp', gitsigns.preview_hunk)
-          map('n', 'ghb', function() gitsigns.blame_line{full=true} end)
-          map('n', 'ghd', gitsigns.diffthis)
-          map('n', 'ghD', function() gitsigns.diffthis('~') end)
+          map('n', 'ghs', gitsigns.stage_hunk, { desc = "Stage current hunk" })
+          map('v', 'ghs', function()
+            gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+          end, { desc = "Stage selected hunk" })
 
-          -- Text object
-          map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+          map('n', 'ghu', gitsigns.undo_stage_hunk, { desc = "Undo stage hunk" })
+
+          map('n', 'ghr', gitsigns.reset_hunk, { desc = "Reset current hunk" })
+          map('v', 'ghr', function()
+            gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+          end, { desc = "Reset selected hunk" })
+
+          map('n', 'ghR', gitsigns.reset_buffer, { desc = "Reset entire buffer" })
+          map('n', 'ghp', gitsigns.preview_hunk, { desc = "Preview hunk" })
+
+          map('n', 'ghb', function() gitsigns.blame_line{full=true} end, { desc = "Blame current line" })
+          map('n', 'ghd', gitsigns.diffthis, { desc = "Diff against index" })
+          map('n', 'ghD', function() gitsigns.diffthis('~') end, { desc = "Diff against last commit" })
+
+          map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = "Select hunk" })
         end
       }
     end

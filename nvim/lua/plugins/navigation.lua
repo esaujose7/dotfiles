@@ -14,8 +14,8 @@ return {
       }
     },
     keys = {
-      {"<C-p>", "<Cmd>Telescope find_files<CR>"},
-      {"<leader>ps", "<Cmd>Telescope live_grep<CR>"},
+      {"<C-p>", "<Cmd>Telescope find_files<CR>", desc = "Find files (Telescope)"},
+      {"<leader>ps", "<Cmd>Telescope live_grep<CR>", desc = "Live grep (Telescope)"},
       {
         "<leader>pd",
         function()
@@ -29,9 +29,10 @@ return {
             false
           )
         end,
+        desc = "Live grep in buffer directory (Telescope)",
       },
-      {"<leader>pb", "<Cmd>Telescope buffers<CR>"},
-      {"<leader>ph", "<Cmd>Telescope help_tags<CR>"}
+      {"<leader>pb", "<Cmd>Telescope buffers<CR>", desc = "List buffers (Telescope)"},
+      {"<leader>ph", "<Cmd>Telescope help_tags<CR>", desc = "Help tags (Telescope)"}
     },
   },
   {
@@ -64,9 +65,9 @@ return {
       },
     },
     keys = {
-      { "<leader>pv", ':NvimTreeToggle<CR>', { noremap = true } },
-      { "<leader>pf", ':NvimTreeFindFile<CR>', { noremap = true } },
-      { "<leader>r", ':NvimTreeRefresh<CR>', { noremap = true } }
+      { "<leader>pv", ':NvimTreeToggle<CR>', desc = "Toggle file tree (NvimTree)", noremap = true },
+      { "<leader>pf", ':NvimTreeFindFile<CR>', desc = "Find file in tree (NvimTree)", noremap = true },
+      { "<leader>r", ':NvimTreeRefresh<CR>', desc = "Refresh file tree (NvimTree)", noremap = true }
     }
   },
   {

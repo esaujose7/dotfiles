@@ -28,7 +28,7 @@ return {
       }
     },
     keys = {
-      {'<leader>a', ":CopilotChatToggle<CR>", { noremap = false }},
+      {'<leader>a', ":CopilotChatToggle<CR>", { noremap = false, desc = "Toggle CopilotChat" }},
     }
   },
   {
