@@ -374,7 +374,16 @@ function M.on_attach()
   -- LSP actions
   vim.keymap.set('n', '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
   vim.keymap.set('n', '<leader>rr', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-  vim.keymap.set('n', 'K', require('hover').hover, {desc = 'hover.nvim'})
+  vim.keymap.set('n', 'K', function()
+    local api = vim.api
+    local hover_win = vim.b.hover_preview
+    if hover_win and api.nvim_win_is_valid(hover_win) then
+      api.nvim_set_current_win(hover_win)
+    else
+      require("hover").hover()
+    end
+  end,
+  { desc = "hover.nvim" })
   vim.keymap.set("n", "<C-n>", function() require("hover").hover_switch("next") end, {desc = "hover.nvim (next source)"})
 
   -- Diagnostics
