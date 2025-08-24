@@ -1,22 +1,38 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    tag = '0.1.8',
     opts = {
       defaults = {
         sorting_strategy = "ascending",
         mappings = {
           n = {
-            ["q"] = require('telescope.actions').close
+            ["q"] = require('telescope.actions').close,
           },
         },
       }
     },
     keys = {
       {"<C-p>", "<Cmd>Telescope find_files<CR>"},
-      {"<leader>ps", "<Cmd>Telescope live_grep<CR>"}
+      {"<leader>ps", "<Cmd>Telescope live_grep<CR>"},
+      {
+        "<leader>pd",
+        function()
+          local function escape(keys)
+            return vim.api.nvim_replace_termcodes(keys, true, false, true)
+          end
+
+          vim.api.nvim_feedkeys(
+            ":lua require('telescope.builtin').live_grep({ cwd = '" .. require('telescope.utils').buffer_dir() .. "' })" .. escape '<C-f>',
+            "n",
+            false
+          )
+        end,
+      },
+      {"<leader>pb", "<Cmd>Telescope buffers<CR>"},
+      {"<leader>ph", "<Cmd>Telescope help_tags<CR>"}
     },
-    tag = '0.1.8',
-    dependencies = { 'nvim-lua/plenary.nvim' }
   },
   {
     'nvim-tree/nvim-tree.lua',
@@ -66,5 +82,26 @@ return {
         { "<leader>n", "<cmd>Grapple cycle_tags next<cr>", desc = "Grapple cycle next tag" },
         { "<leader>N", "<cmd>Grapple cycle_tags prev<cr>", desc = "Grapple cycle previous tag" },
     },
-  }
+  },
+  {
+    "folke/trouble.nvim",
+    opts = {
+      auto_preview = false,
+      open_no_results = true,
+      focus = true,
+    },
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+    },
+  },
 }

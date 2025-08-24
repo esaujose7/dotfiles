@@ -29,7 +29,7 @@ return {
     opts = {
       init = function()
         -- Require providers
-        require("hover.providers.lsp")
+        require('hover.providers.lsp')
         require('hover.providers.fold_preview')
         require('hover.providers.diagnostic')
         require('hover.providers.man')
@@ -42,20 +42,4 @@ return {
       preview_window = false,
     }
   },
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    opts = {
-      delay = 700,
-    },
-    keys = {
-      {
-        "<leader>?",
-        function()
-          require("which-key").show({ global = false })
-        end,
-        desc = "Buffer Local Keymaps (which-key)",
-      },
-    },
-  }
 }
