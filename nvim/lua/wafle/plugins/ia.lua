@@ -6,9 +6,8 @@ return {
     },
     build = "make tiktoken",
     opts = {
-      -- See Configuration section for options
       window = {
-        width = 0.4,              -- 50% of screen width
+        width = 0.4,
       },
     },
     keys = {
