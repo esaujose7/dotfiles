@@ -82,5 +82,26 @@ return {
         { "<leader>n", "<cmd>Grapple cycle_tags next<cr>", desc = "Grapple cycle next tag" },
         { "<leader>N", "<cmd>Grapple cycle_tags prev<cr>", desc = "Grapple cycle previous tag" },
     },
-  }
+  },
+  {
+    "folke/trouble.nvim",
+    opts = {
+      auto_preview = false,
+      open_no_results = true,
+      focus = true,
+    },
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+    },
+  },
 }

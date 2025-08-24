@@ -13,5 +13,12 @@ vim.keymap.set('n', "<C-u>", '<C-u>zz', { noremap = true })
 vim.keymap.set('n', 'n', "nzz", { noremap = true })
 vim.keymap.set('n', 'N', "Nzz", { noremap = true })
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+vim.lsp.config("*", {
+  on_attach = require 'wafle.util'.on_attach,
+  capabilities = capabilities,
+})
+
 require("wafle.lazy")
-require("wafle.lsp")

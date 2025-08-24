@@ -42,41 +42,4 @@ return {
       preview_window = false,
     }
   },
-  {
-    "folke/trouble.nvim",
-    opts = {
-      auto_preview = false,
-      open_no_results = true,
-      focus = true,
-    },
-    cmd = "Trouble",
-    keys = {
-      {
-        "<leader>xx",
-        "<cmd>Trouble diagnostics toggle<cr>",
-        desc = "Diagnostics (Trouble)",
-      },
-      {
-        "<leader>cl",
-        "<cmd>Trouble lsp toggle focus=false<cr>",
-        desc = "LSP Definitions / references / ... (Trouble)",
-      },
-    },
-  },
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    opts = {
-      delay = 700,
-    },
-    keys = {
-      {
-        "<leader>?",
-        function()
-          require("which-key").show({ global = false })
-        end,
-        desc = "Buffer Local Keymaps (which-key)",
-      },
-    },
-  }
 }
