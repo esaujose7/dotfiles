@@ -25,5 +25,5 @@ vim.opt.termguicolors = true
 vim.opt.showmode = false
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
-vim.opt.completeopt = "menu,menuone,noselect"
+vim.opt.completeopt = "menu,menuone,noselect,popup"
 vim.opt.splitright = true
