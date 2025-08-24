@@ -21,7 +21,6 @@ return {
 
       cmp.setup({
         mapping = {
-          ['<C-Space>'] = cmp.mapping.complete(),
           ['<C-e>'] = cmp.mapping.close(),
           ['<CR>'] = cmp.mapping.confirm({ select = true }),
           ['<Tab>'] = vim.schedule_wrap(function(fallback)
