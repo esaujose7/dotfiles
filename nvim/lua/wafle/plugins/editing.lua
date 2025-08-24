@@ -44,7 +44,11 @@ return {
   },
   {
     "folke/trouble.nvim",
-    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    opts = {
+      auto_preview = false,
+      open_no_results = true,
+      focus = true,
+    },
     cmd = "Trouble",
     keys = {
       {
@@ -54,13 +58,8 @@ return {
       },
       {
         "<leader>cl",
-        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        "<cmd>Trouble lsp toggle focus=false<cr>",
         desc = "LSP Definitions / references / ... (Trouble)",
-      },
-      {
-        "<leader>xQ",
-        "<cmd>Trouble qflist toggle<cr>",
-        desc = "Quickfix List (Trouble)",
       },
     },
   },
