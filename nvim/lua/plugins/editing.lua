@@ -1,19 +1,20 @@
 return {
   {
-    'windwp/nvim-autopairs',
-    event = "InsertEnter",
-    config = true
+    'echasnovski/mini.comment',
+    version = '*',
+    opts = {
+      mappings = {
+        comment = '<leader>c',
+        comment_line = '<leader>cc',
+        comment_visual = '<leader>c',
+        textobject = '<leader>c',
+      },
+    }
   },
   {
-    'b3nj5m1n/kommentary',
-    init = function()
-      vim.g.kommentary_create_default_mappings = 0
-    end,
-    keys = {
-      { "<leader>cc", "<Plug>kommentary_line_default", desc = "Comment/uncomment current line" },
-      { "<leader>c", "<Plug>kommentary_motion_default", desc = "Comment/uncomment with motion" },
-      { "<leader>c", "<Plug>kommentary_visual_default", mode = "x", desc = "Comment/uncomment selection" }
-    }
+    'echasnovski/mini.pairs',
+    version = '*',
+    opts = {}
   },
   {
     "lukas-reineke/indent-blankline.nvim",
