@@ -13,7 +13,22 @@ return {
     },
     keys = {
       {"<C-p>", "<Cmd>Telescope find_files<CR>"},
-      {"<leader>ps", "<Cmd>Telescope live_grep<CR>"}
+      {"<leader>ps", "<Cmd>Telescope live_grep<CR>"},
+      {"<leader>pd",
+        function()
+          function escape(keys)
+            return vim.api.nvim_replace_termcodes(keys, true, false, true)
+          end
+
+          vim.api.nvim_feedkeys(
+            ":lua require('telescope.builtin').live_grep({ cwd = '" .. require('telescope.utils').buffer_dir() .. "' })" .. escape '<C-f>',
+            "n",
+            false
+          )
+        end,
+      },
+      {"<leader>pb", "<Cmd>Telescope buffers<CR>"},
+      {"<leader>ph", "<Cmd>Telescope help_tags<CR>"}
     },
     tag = '0.1.8',
     dependencies = { 'nvim-lua/plenary.nvim' }
