@@ -42,12 +42,13 @@ return {
             end
           end, { 'i', 's' }),
         },
+
         sources = cmp.config.sources({
-          { name = "copilot" },
           { name = 'nvim_lsp' },
           { name = 'buffer' },
           { name = 'nvim_lua' }
         }),
+
         formatting = {
           format = require("lspkind").cmp_format({
             with_text = true,
@@ -55,7 +56,6 @@ return {
               nvim_lsp = "[LSP]",
               buffer = "[Buffer]",
               nvim_lua = "[Lua]",
-              copilot = "[Copilot]"
             })
           }),
         },
