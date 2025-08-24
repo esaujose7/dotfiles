@@ -20,4 +20,6 @@ vim.lsp.config("*", {
   capabilities = capabilities,
 })
 
+vim.lsp.enable('lua_ls')
+
 require("config.lazy")
