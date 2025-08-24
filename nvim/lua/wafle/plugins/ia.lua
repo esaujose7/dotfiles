@@ -7,10 +7,12 @@ return {
     build = "make tiktoken",
     opts = {
       -- See Configuration section for options
+      window = {
+        width = 0.4,              -- 50% of screen width
+      },
     },
     keys = {
-      {'<leader>cp', ":CopilotChatToggle<CR>", { noremap = false }},
-      {'<leader>cm', ":CopilotChatModels<CR>", { noremap = false }},
+      {'<leader>a', ":CopilotChatToggle<CR>", { noremap = false }},
     }
   },
   {
