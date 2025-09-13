@@ -20,7 +20,7 @@ return {
       },
       mappings = {
         complete = {
-          insert = '<C-;>',
+          insert = '<C-a>',
           callback = function()
             require('CopilotChat.completion').complete()
           end,
