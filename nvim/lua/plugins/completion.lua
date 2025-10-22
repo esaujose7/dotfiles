@@ -23,7 +23,7 @@ return {
         mapping = {
           ['<C-e>'] = cmp.mapping.close(),
           ['<CR>'] = cmp.mapping.confirm({ select = true }),
-          ['<Tab>'] = vim.schedule_wrap(function(fallback)
+          ['<Tab>'] = cmp.mapping(function(fallback)
               if cmp.visible() and has_words_before() then
                 cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
               else
