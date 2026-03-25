@@ -64,4 +64,4 @@ local config = {
 }
 
 require('jdtls').start_or_attach(config)
-require('util').on_attach()
+require('config.util').on_attach()
