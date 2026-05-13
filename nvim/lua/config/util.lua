@@ -8,17 +8,7 @@ function M.on_attach()
   vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, opts)
   vim.keymap.set('n', '<leader>rr', vim.lsp.buf.rename, opts)
 
-  vim.keymap.set('n', 'K', function()
-    local api = vim.api
-    local hover_win = vim.b.hover_preview
-    if hover_win and api.nvim_win_is_valid(hover_win) then
-      api.nvim_set_current_win(hover_win)
-    else
-      require("hover").hover()
-    end
-  end,
-  { desc = "hover.nvim" })
-  vim.keymap.set("n", "<C-n>", function() require("hover").hover_switch("next") end, {desc = "hover.nvim (next source)"})
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "hover" })
 
   -- Diagnostics
   vim.keymap.set('n', '[e', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
